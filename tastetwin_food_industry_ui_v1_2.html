@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TasteTwin | Sensory Intelligence Platform</title>
+<style>
+:root{--navy:#14263d;--navy2:#203a59;--teal:#159b8b;--teal2:#e4f5f1;--orange:#ed9b45;--ink:#233247;--muted:#718096;--line:#e5eaf0;--bg:#f4f7fa;--white:#fff;--red:#d65b5b;--green:#23845e;--shadow:0 8px 28px rgba(23,42,65,.07)}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);font:14px/1.45 Inter,Segoe UI,Arial,sans-serif;color:var(--ink)}button,input,select,textarea{font:inherit}button{cursor:pointer}.app{display:flex;min-height:100vh}.sidebar{width:246px;background:var(--navy);color:#dbe5ef;padding:22px 14px;display:flex;flex-direction:column;flex-shrink:0}.brand{display:flex;gap:10px;align-items:center;padding:0 10px 22px;border-bottom:1px solid #ffffff20}.logo{width:34px;height:34px;border-radius:11px;background:linear-gradient(135deg,#28b7a4,#8ad7c8);display:grid;place-items:center;color:#103b3a;font-weight:900;font-size:18px}.brand b{font-size:17px;letter-spacing:.2px;color:white}.brand small{display:block;color:#9fb2c6;font-size:10px;letter-spacing:1.4px;text-transform:uppercase}.navlabel{font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:#8298ae;padding:22px 12px 8px}.nav button{width:100%;border:0;background:transparent;color:#c6d3df;text-align:left;padding:10px 12px;border-radius:9px;margin:2px 0;display:flex;gap:11px;align-items:center}.nav button:hover,.nav button.active{background:#ffffff16;color:white}.nav .ico{width:20px;text-align:center;font-size:16px}.sidefoot{margin-top:auto;border-top:1px solid #ffffff20;padding:16px 10px 0;color:#9fb2c6;font-size:11px}.main{flex:1;min-width:0}.topbar{height:68px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 28px;position:sticky;top:0;z-index:5}.crumb{font-size:13px;color:var(--muted)}.crumb strong{color:var(--ink)}.topright{display:flex;gap:12px;align-items:center}.mode{border:1px solid var(--line);border-radius:9px;padding:8px 11px;background:white;color:var(--ink)}.avatar{width:34px;height:34px;border-radius:50%;background:#e7f4f1;color:#147c70;display:grid;place-items:center;font-weight:700}.content{padding:26px 30px 50px;max-width:1500px;margin:auto}.pagehead{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;margin-bottom:22px}.eyebrow{color:var(--teal);font-size:11px;font-weight:800;letter-spacing:1.4px;text-transform:uppercase}.pagehead h1{font-size:26px;margin:5px 0 4px;color:var(--navy);letter-spacing:-.5px}.sub{color:var(--muted);margin:0}.actions{display:flex;gap:8px;flex-wrap:wrap}.btn{border:1px solid var(--line);background:white;color:var(--ink);border-radius:8px;padding:9px 13px;font-weight:650}.btn.primary{background:var(--teal);color:white;border-color:var(--teal)}.btn.dark{background:var(--navy);color:white;border-color:var(--navy)}.btn.soft{background:var(--teal2);color:#147c70;border-color:#d2eee8}.btn.warn{background:#fff6e9;color:#9a5b13;border-color:#f4dfbd}.btn.small{padding:6px 9px;font-size:12px}.grid{display:grid;gap:16px}.stats{grid-template-columns:repeat(4,minmax(0,1fr));margin-bottom:18px}.card{background:white;border:1px solid var(--line);border-radius:13px;padding:17px;box-shadow:var(--shadow)}.statlabel{font-size:12px;color:var(--muted)}.statval{font-size:27px;font-weight:800;color:var(--navy);margin:7px 0 3px}.statnote{font-size:11px;color:var(--green)}.layout2{grid-template-columns:1.35fr 1fr}.layout3{grid-template-columns:repeat(3,minmax(0,1fr))}.sectiontitle{font-size:15px;color:var(--navy);font-weight:800;margin:0 0 13px}.muted{color:var(--muted)}.tag{display:inline-flex;align-items:center;border-radius:20px;padding:4px 8px;font-size:10px;font-weight:750;background:#edf2f7;color:#526579}.tag.green{background:#e7f6ef;color:#24764f}.tag.orange{background:#fff2df;color:#9a641c}.tag.blue{background:#eaf1fb;color:#416b9d}.tag.red{background:#ffeded;color:#a74747}.barrow{display:grid;grid-template-columns:100px 1fr 38px;gap:10px;align-items:center;margin:12px 0;font-size:12px}.bar{height:8px;background:#edf1f5;border-radius:20px;overflow:hidden}.bar i{display:block;height:100%;background:var(--teal);border-radius:20px}.tablewrap{overflow:auto}table{width:100%;border-collapse:collapse;font-size:12px}th{text-align:left;color:#7b8999;font-weight:700;font-size:10px;text-transform:uppercase;letter-spacing:.6px;background:#f8fafc;padding:11px 10px;white-space:nowrap}td{padding:12px 10px;border-top:1px solid #edf0f4;vertical-align:middle}tr:hover td{background:#fbfcfd}.linkbtn{border:0;background:transparent;color:var(--teal);font-weight:700;padding:0}.panel{display:none}.panel.active{display:block}.formgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}.field{display:flex;flex-direction:column;gap:5px}.field label{font-size:11px;font-weight:750;color:#526174}.field input,.field select,.field textarea{width:100%;border:1px solid #dce3ea;border-radius:8px;padding:10px;background:#fff;color:var(--ink);outline:none}.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--teal);box-shadow:0 0 0 3px #159b8b18}.field textarea{min-height:74px;resize:vertical}.full{grid-column:1/-1}.divider{height:1px;background:var(--line);margin:15px 0}.notice{padding:12px 14px;background:#f0f8f7;border:1px solid #d6eee9;border-radius:9px;color:#356c66;font-size:12px}.warning{padding:12px 14px;background:#fff8ed;border:1px solid #f3e1c4;border-radius:9px;color:#885e24;font-size:12px}.result{background:#f8fbfc;border:1px solid #e3ebef;border-radius:10px;padding:14px}.result h3{margin:0 0 7px;color:var(--navy);font-size:14px}.score{font-size:28px;font-weight:850;color:var(--teal)}.pillrow{display:flex;gap:7px;flex-wrap:wrap}.chip{background:#f0f3f7;padding:6px 9px;border-radius:7px;font-size:11px;color:#526174}.sensory{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.sensoryitem{border:1px solid var(--line);border-radius:9px;padding:10px}.sensoryitem label{font-size:11px;font-weight:700;display:flex;justify-content:space-between}.sensoryitem input{width:100%;accent-color:var(--teal);margin-top:9px}.empty{padding:26px;text-align:center;color:var(--muted)}.toast{position:fixed;right:22px;bottom:22px;background:#17334f;color:white;padding:12px 17px;border-radius:9px;box-shadow:var(--shadow);display:none;z-index:20}.homehero{background:linear-gradient(115deg,#17334f,#1a6e68);color:white;border-radius:15px;padding:23px;margin-bottom:17px;display:flex;justify-content:space-between;gap:15px;align-items:center}.homehero h2{font-size:21px;margin:5px 0}.homehero p{color:#d0e8e4;margin:0;max-width:560px}.quickgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.quick{border:1px solid var(--line);border-radius:11px;padding:15px;background:white;text-align:left}.quick:hover{border-color:var(--teal);transform:translateY(-1px)}.quick .qico{font-size:22px}.quick b{display:block;margin:7px 0 3px;color:var(--navy)}.quick small{color:var(--muted)}.hide{display:none!important}.footer{font-size:11px;color:#8492a1;margin-top:24px;text-align:center}
+@media(max-width:900px){.sidebar{width:68px;padding:16px 8px}.brand{padding:0 8px 18px}.brand div:last-child,.navlabel,.nav button span:last-child,.sidefoot{display:none}.nav button{justify-content:center;padding:12px 5px}.nav .ico{width:auto}.content{padding:20px 16px}.stats{grid-template-columns:repeat(2,1fr)}.layout2,.layout3{grid-template-columns:1fr}.topbar{padding:0 16px}}
+@media(max-width:560px){.pagehead{display:block}.actions{margin-top:12px}.formgrid,.sensory,.quickgrid{grid-template-columns:1fr}.homehero{display:block}.homehero .btn{margin-top:12px}.stats{gap:9px}.statval{font-size:22px}}
+</style>
+
+<style id="food-industry-refresh">
+:root{
+ --navy:#263b2d;--navy2:#3d5940;--teal:#557b45;--teal2:#edf3e8;
+ --orange:#e47b3d;--ink:#2f382f;--muted:#7c8176;--line:#e9e2d5;
+ --bg:#f7f4ec;--white:#fffdf8;--red:#c95a48;--green:#4f7c48;
+ --shadow:0 9px 26px rgba(76,62,39,.08)
+}
+body{background:var(--bg);color:var(--ink)}
+.sidebar{background:linear-gradient(180deg,#263b2d 0%,#344c36 58%,#263b2d 100%)}
+.logo{background:linear-gradient(135deg,#f2a34d,#e66f3c);color:#fff;border-radius:12px}
+.brand small{color:#d0d9c9}
+.nav button:hover,.nav button.active{background:#ffffff20;color:#fff;border-left:3px solid #f2a34d;padding-left:9px}
+.navlabel{color:#c1cdb9}
+.topbar{background:rgba(255,253,248,.96);backdrop-filter:blur(10px)}
+.avatar{background:#f6e5d5;color:#a34d2d}
+.content{max-width:1540px}
+.eyebrow{color:#a95c31}
+.pagehead h1{color:#263b2d}
+.card{background:var(--white);border-color:#e9e2d5;border-radius:16px;box-shadow:var(--shadow)}
+.card:hover{border-color:#ded2bd}
+.btn{border-radius:10px;transition:transform .16s ease,box-shadow .16s ease,background .16s ease}
+.btn:hover{transform:translateY(-1px);box-shadow:0 5px 14px rgba(57,70,43,.12)}
+.btn.primary{background:#557b45;border-color:#557b45}
+.btn.primary:hover{background:#466a38}
+.btn.dark{background:#263b2d;border-color:#263b2d}
+.btn.soft{background:#edf3e8;color:#456b39;border-color:#dce8d3}
+.btn.warn{background:#fff1df;color:#9c572b;border-color:#f2d6b6}
+.statval{color:#263b2d}
+.bar i{background:#77934e}
+.tag.green{background:#eaf3e4;color:#47713d}
+.tag.orange{background:#fff0df;color:#a65b2d}
+.tag.blue{background:#edf1e7;color:#63774c}
+.tag.red{background:#fbe9e5;color:#a64c3d}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:#77934e;box-shadow:0 0 0 3px #77934e20}
+.sensoryitem input{accent-color:#77934e}
+.notice{background:#eff5e9;border-color:#dce9d2;color:#496b3f}
+.warning{background:#fff3e5;border-color:#f1dcc0;color:#925b2e}
+.result{background:#f8f5ec;border-color:#e9e0ce}
+.score{color:#587b42}
+.homehero{background:linear-gradient(112deg,#2d4934 0%,#557b45 60%,#bd713d 130%);position:relative;overflow:hidden}
+.homehero:after{content:"🥑  🍅  🥕  🌿";position:absolute;right:25px;bottom:8px;font-size:29px;opacity:.24;letter-spacing:8px;pointer-events:none}
+.homehero>*{position:relative;z-index:1}
+.quick{background:#fffdf8;border-color:#e9e2d5;border-radius:14px;transition:.18s}
+.quick:hover{border-color:#d58a4f;box-shadow:var(--shadow)}
+.quick b{color:#344a32}
+.quick .qico{display:inline-grid;place-items:center;width:38px;height:38px;border-radius:12px;background:#f7eadb}
+th{background:#f4f0e6;color:#77796d}
+td{border-color:#eee8dc}
+tr:hover td{background:#fcf8ef}
+.chip{background:#f1eee5;color:#5d6657}
+.toast{background:#263b2d;border-left:4px solid #e47b3d}
+.smartbar{display:flex;align-items:center;gap:9px;flex-wrap:wrap;padding:12px 14px;margin:0 0 20px;background:#fffdf8;border:1px solid #e9e2d5;border-radius:15px;box-shadow:0 5px 18px rgba(76,62,39,.05)}
+.smartbar-label{font-size:10px;font-weight:850;letter-spacing:1.2px;text-transform:uppercase;color:#8b806d;margin-right:3px}
+.smart-action{border:1px solid #e6dfd1;background:#fbf8f0;color:#394b35;border-radius:9px;padding:8px 11px;font-size:12px;font-weight:750;display:inline-flex;gap:7px;align-items:center}
+.smart-action:hover{background:#edf3e8;border-color:#cbdcbd;transform:translateY(-1px)}
+.smart-action .sym{font-size:15px}
+.smart-action.featured{background:#557b45;border-color:#557b45;color:#fff}
+.food-ribbon{display:flex;gap:9px;flex-wrap:wrap;margin:0 0 17px}
+.food-ribbon span{display:inline-flex;align-items:center;gap:7px;background:#f1eee4;border:1px solid #e8e0d0;padding:7px 11px;border-radius:30px;color:#59624f;font-size:11px;font-weight:700}
+.food-ribbon b{font-size:16px}
+@media(max-width:700px){.smartbar{gap:7px}.smartbar-label{width:100%}.smart-action{flex:1;justify-content:center}.homehero:after{display:none}}
+@media print{.sidebar,.topbar,.smartbar{display:none!important}.content{padding:0}.card{box-shadow:none}}
+</style>
+
+</head>
+<body>
+<div class="app">
+<aside class="sidebar">
+  <div class="brand"><div class="logo">T</div><div><b>TasteTwin</b><small>Sensory intelligence</small></div></div>
+  <div class="navlabel">Workspace</div>
+  <nav class="nav" id="nav">
+    <button class="active" data-page="dashboard"><span class="ico">▦</span><span>Overview</span></button>
+    <button data-page="formulator"><span class="ico">⚗</span><span>Formulation Studio</span></button>
+    <button data-page="substitute"><span class="ico">⇄</span><span>Ingredient Intelligence</span></button>
+    <button data-page="experiments"><span class="ico">◉</span><span>Experiments & Tasting</span></button>
+    <button data-page="sensory"><span class="ico">◈</span><span>Sensory Twin</span></button>
+    <button data-page="nutrition"><span class="ico">♡</span><span>Nutrition & Safety</span></button>
+    <button data-page="cost"><span class="ico">₹</span><span>Cost & Yield</span></button>
+    <div class="navlabel">Home Kitchen</div>
+    <button data-page="home"><span class="ico">⌂</span><span>Home Kitchen</span></button>
+    <button data-page="pantry"><span class="ico">▤</span><span>My Pantry & Meals</span></button>
+    <div class="navlabel">Administration</div>
+    <button data-page="masters"><span class="ico">⚙</span><span>Masters & Rules</span></button>
+    <button data-page="reports"><span class="ico">▥</span><span>Reports & Decisions</span></button>
+  </nav>
+  <div class="sidefoot">TasteTwin Demo Workspace<br>Food industry UI refresh · v1.1</div>
+</aside>
+<main class="main">
+<header class="topbar">
+  <div class="crumb">Workspace / <strong id="crumb">Overview</strong></div>
+  <div class="topright">
+    <select class="mode" id="role" aria-label="Select workspace">
+      <option value="pro">Professional Studio</option>
+      <option value="home">Home Kitchen</option>
+      <option value="admin">ERP / R&D Head</option>
+    </select>
+    <div class="avatar">RK</div>
+  </div>
+</header>
+<div class="content">
+
+<div class="smartbar" aria-label="TasteTwin smart actions">
+  <span class="smartbar-label">Smart actions</span>
+  <button class="smart-action featured" onclick="go('formulator')"><span class="sym">＋</span> New formulation</button>
+  <button class="smart-action" onclick="go('substitute')"><span class="sym">⇄</span> Find ingredient substitute</button>
+  <button class="smart-action" onclick="newTrial()"><span class="sym">◉</span> Start blind tasting</button>
+  <button class="smart-action" onclick="go('nutrition')"><span class="sym">♡</span> Nutrition & allergen check</button>
+  <button class="smart-action" onclick="go('cost');setTimeout(()=>calcCost(),80)"><span class="sym">₹</span> Batch cost</button>
+  <button class="smart-action" onclick="go('home')"><span class="sym">⌂</span> Home cooking helper</button>
+</div>
+<div class="food-ribbon" aria-label="Food product categories">
+  <span><b>🥭</b> Beverage & fruit</span>
+  <span><b>🥖</b> Bakery & grains</span>
+  <span><b>🧀</b> Dairy & alternatives</span>
+  <span><b>🌶️</b> Sauces & seasonings</span>
+  <span><b>🥜</b> Snacks & confectionery</span>
+</div>
+
+<section class="panel active" id="page-dashboard">
+  <div class="pagehead"><div><div class="eyebrow">Food innovation · sensory intelligence workspace</div><h1>Product & Taste Overview</h1><p class="sub">Connect formulation decisions with sensory evidence, cost, nutrition and consumer response.</p></div><div class="actions"><button class="btn" onclick="go('reports')">View reports</button><button class="btn primary" onclick="go('formulator')">＋ New formulation</button></div></div>
+  <div class="grid stats">
+    <div class="card"><div class="statlabel">Active formulations</div><div class="statval" id="statForms">18</div><div class="statnote">+3 created this month</div></div>
+    <div class="card"><div class="statlabel">Trials awaiting review</div><div class="statval">6</div><div class="statnote" style="color:#b77925">2 need sensory validation</div></div>
+    <div class="card"><div class="statlabel">Average sensory match</div><div class="statval">91.4%</div><div class="statnote">Illustrative model score</div></div>
+    <div class="card"><div class="statlabel">Potential cost opportunity</div><div class="statval">₹2.4L</div><div class="statnote">Estimated across candidate changes</div></div>
+  </div>
+  <div class="grid layout2">
+    <div class="card"><h3 class="sectiontitle">Recent formulation work</h3><div class="tablewrap"><table><thead><tr><th>Product</th><th>Revision</th><th>Owner</th><th>Status</th><th>Match</th></tr></thead><tbody>
+      <tr><td>Mango drink</td><td>v1.4</td><td>R&D Team</td><td><span class="tag orange">Trial planned</span></td><td>94%</td></tr>
+      <tr><td>Tomato sauce</td><td>v2.1</td><td>Chef Anita</td><td><span class="tag green">Approved</span></td><td>96%</td></tr>
+      <tr><td>Oat beverage</td><td>v0.8</td><td>Product Lab</td><td><span class="tag blue">R&D review</span></td><td>88%</td></tr>
+      <tr><td>Spiced snack</td><td>v3.0</td><td>R&D Team</td><td><span class="tag red">Needs review</span></td><td>79%</td></tr>
+    </tbody></table></div></div>
+    <div class="card"><h3 class="sectiontitle">Reference sensory profile · Mango drink</h3>
+      <div class="barrow"><span>Sweetness</span><div class="bar"><i style="width:78%"></i></div><b>7.8</b></div>
+      <div class="barrow"><span>Acidity</span><div class="bar"><i style="width:54%"></i></div><b>5.4</b></div>
+      <div class="barrow"><span>Fruit aroma</span><div class="bar"><i style="width:86%"></i></div><b>8.6</b></div>
+      <div class="barrow"><span>Body</span><div class="bar"><i style="width:68%"></i></div><b>6.8</b></div>
+      <div class="barrow"><span>Aftertaste</span><div class="bar"><i style="width:42%"></i></div><b>4.2</b></div>
+      <div class="notice">Reference profile is based on a hypothetical trained-panel score (0–10). Replace with measured data for real use.</div>
+    </div>
+  </div>
+  <div class="grid layout3" style="margin-top:16px">
+    <div class="card"><h3 class="sectiontitle">R&D formulation guide</h3><p class="muted">Get instant rule-based guidance on ingredient effects, formulation trade-offs and sensory deviations. Works offline; no AI/API connection.</p><div class="field"><input id="askAI" placeholder="e.g. Reduce sugar without losing body"></div><button class="btn primary" style="margin-top:9px" onclick="askAssistant()">Get formulation guidance</button><div id="aiAnswer" class="muted" style="font-size:12px;margin-top:10px"></div></div>
+    <div class="card"><h3 class="sectiontitle">Quality attention</h3><p><span class="tag red">High priority</span> 1 allergen declaration needs review</p><p><span class="tag orange">Watch</span> 2 candidate formulations have low prediction confidence</p><p><span class="tag blue">Upcoming</span> 3 stability observations due this week</p></div>
+    <div class="card"><h3 class="sectiontitle">Quick actions</h3><div class="pillrow"><button class="btn small" onclick="go('substitute')">Find substitute</button><button class="btn small" onclick="go('experiments')">Start tasting</button><button class="btn small" onclick="go('cost')">Calculate batch cost</button><button class="btn small" onclick="go('home')">Home recipe helper</button></div></div>
+  </div>
+</section>
+
+<section class="panel" id="page-formulator">
+  <div class="pagehead"><div><div class="eyebrow">Professional studio</div><h1>Formulation Studio</h1><p class="sub">Create a controlled formulation, define its target sensory profile and compare candidate revisions.</p></div><div class="actions"><button class="btn" onclick="resetForm()">Reset</button><button class="btn primary" onclick="runFormulation()">Run AI analysis ↗</button></div></div>
+  <div class="grid layout2">
+    <div class="card">
+      <h3 class="sectiontitle">1. Product brief</h3>
+      <div class="formgrid">
+        <div class="field"><label>Product name</label><input id="productName" value="Mango fruit beverage"></div>
+        <div class="field"><label>Product category</label><select id="category"><option>Beverage</option><option>Bakery</option><option>Dairy</option><option>Sauce & condiment</option><option>Snack</option><option>Confectionery</option><option>Home recipe</option></select></div>
+        <div class="field"><label>Target market / segment</label><select id="segment"><option>General adult consumers</option><option>Children (requires nutrition review)</option><option>Low-sugar preference</option><option>Regional preference study</option><option>Premium / gourmet</option></select></div>
+        <div class="field"><label>Batch size (kg)</label><input type="number" id="batch" value="100" min="0.01" step="0.01"></div>
+        <div class="field"><label>Primary objective</label><select id="objective"><option>Maintain taste, reduce cost</option><option>Reduce sugar</option><option>Improve aroma</option><option>Improve texture / mouthfeel</option><option>Improve nutrition</option><option>Match reference product</option></select></div>
+        <div class="field"><label>Maximum cost per kg (₹)</label><input type="number" id="targetCost" value="85" min="0"></div>
+      </div>
+      <div class="divider"></div><h3 class="sectiontitle">2. Ingredient composition</h3>
+      <div class="tablewrap"><table id="ingredientTable"><thead><tr><th>Ingredient</th><th>Qty (kg)</th><th>Cost/kg ₹</th><th>Function</th><th></th></tr></thead><tbody id="ingredientRows">
+      <tr><td><input value="Sugar" class="ingname"></td><td><input type="number" value="10" step=".01" class="ingqty"></td><td><input type="number" value="42" class="ingcost"></td><td>Sweetness</td><td><button class="linkbtn" onclick="removeRow(this)">Remove</button></td></tr>
+      <tr><td><input value="Mango concentrate" class="ingname"></td><td><input type="number" value="8" step=".01" class="ingqty"></td><td><input type="number" value="180" class="ingcost"></td><td>Fruit body</td><td><button class="linkbtn" onclick="removeRow(this)">Remove</button></td></tr>
+      <tr><td><input value="Citric acid" class="ingname"></td><td><input type="number" value=".15" step=".01" class="ingqty"></td><td><input type="number" value="95" class="ingcost"></td><td>Acidity</td><td><button class="linkbtn" onclick="removeRow(this)">Remove</button></td></tr>
+      <tr><td><input value="Natural mango flavour" class="ingname"></td><td><input type="number" value=".10" step=".01" class="ingqty"></td><td><input type="number" value="900" class="ingcost"></td><td>Aroma</td><td><button class="linkbtn" onclick="removeRow(this)">Remove</button></td></tr>
+      <tr><td><input value="Water" class="ingname"></td><td><input type="number" value="81.75" step=".01" class="ingqty"></td><td><input type="number" value=".1" class="ingcost"></td><td>Carrier</td><td><button class="linkbtn" onclick="removeRow(this)">Remove</button></td></tr>
+      </tbody></table></div>
+      <button class="btn small" style="margin-top:10px" onclick="addIngredient()">＋ Add ingredient</button>
+      <div class="divider"></div>
+      <div class="formgrid"><div class="field"><label>Reference formulation</label><select id="reference"><option>Mango beverage – approved v1.3</option><option>None – new product</option></select></div><div class="field"><label>Revision note</label><input id="revisionNote" placeholder="e.g. sugar reduction trial"></div></div>
+    </div>
+    <div class="card">
+      <h3 class="sectiontitle">3. Target sensory profile <span class="tag blue">0–10 scale</span></h3>
+      <div class="sensory" id="targetSliders"></div>
+      <div class="divider"></div>
+      <h3 class="sectiontitle">4. Optimization constraints</h3>
+      <div class="field"><label>Constraints / exclusions</label><textarea id="constraints">Reduce added sugar by 30%. Preserve mango aroma. No increase in total ingredient cost. Check sweetener aftertaste and label requirements.</textarea></div>
+      <div class="field" style="margin-top:10px"><label>Optimization priority</label><select id="priority"><option>Balanced: sensory + cost + nutrition</option><option>Maximum sensory similarity</option><option>Lowest formulation cost</option><option>Nutrition first</option></select></div>
+      <div class="notice" style="margin-top:13px">AI output is a decision-support hypothesis. It does not establish food safety, regulatory compliance, shelf life or consumer acceptance.</div>
+    </div>
+  </div>
+  <div id="formResult" class="card hide" style="margin-top:16px"></div>
+</section>
+
+<section class="panel" id="page-substitute">
+  <div class="pagehead"><div><div class="eyebrow">Ingredient intelligence</div><h1>Ingredient Substitution</h1><p class="sub">Find alternatives by function, sensory impact, restrictions and cost—not by name alone.</p></div></div>
+  <div class="grid layout2">
+    <div class="card"><h3 class="sectiontitle">Substitution request</h3><div class="formgrid">
+      <div class="field"><label>Current ingredient</label><select id="subIngredient"><option>Sugar</option><option>Mango concentrate</option><option>Butter</option><option>Milk</option><option>Wheat flour</option><option>Egg</option><option>Salt</option><option>Oil</option></select></div>
+      <div class="field"><label>Product context</label><select id="subContext"><option>Beverage</option><option>Bakery</option><option>Dairy</option><option>Sauce</option><option>Home cooking</option></select></div>
+      <div class="field"><label>Reason for substitution</label><select id="subReason"><option>Reduce cost</option><option>Reduce sugar</option><option>Allergen / dietary restriction</option><option>Availability shortage</option><option>Improve sensory profile</option><option>Improve nutrition</option></select></div>
+      <div class="field"><label>Non-negotiable requirement</label><select id="subRule"><option>No major taste change</option><option>Vegan</option><option>Dairy-free</option><option>Gluten-free</option><option>No artificial sweetener</option><option>Lowest cost</option></select></div>
+      <div class="field full"><label>Additional context</label><textarea id="subNotes" placeholder="Describe recipe, process, quantity or restriction"></textarea></div>
+    </div><button class="btn primary" style="margin-top:13px" onclick="findSubstitutes()">Find alternatives</button></div>
+    <div class="card"><h3 class="sectiontitle">How matching works</h3><div class="barrow"><span>Functional role</span><div class="bar"><i style="width:95%"></i></div><b>High</b></div><div class="barrow"><span>Sensory fit</span><div class="bar"><i style="width:88%"></i></div><b>High</b></div><div class="barrow"><span>Cost fit</span><div class="bar"><i style="width:72%"></i></div><b>Med</b></div><div class="barrow"><span>Process fit</span><div class="bar"><i style="width:80%"></i></div><b>Med</b></div><div class="warning">A substitute is not a universal 1:1 replacement. Dosage, processing behaviour, allergens, stability and local regulations must be checked.</div></div>
+  </div>
+  <div id="subResult" class="grid layout2" style="margin-top:16px"></div>
+</section>
+
+<section class="panel" id="page-experiments">
+  <div class="pagehead"><div><div class="eyebrow">Evidence & validation</div><h1>Experiments & Tasting</h1><p class="sub">Design blind tests, capture panel responses and distinguish measured results from AI predictions.</p></div><div class="actions"><button class="btn primary" onclick="newTrial()">＋ New tasting session</button></div></div>
+  <div class="grid layout2">
+    <div class="card"><h3 class="sectiontitle">Tasting session setup</h3><div class="formgrid">
+      <div class="field"><label>Session name</label><input id="trialName" value="Mango beverage sugar reduction"></div>
+      <div class="field"><label>Test method</label><select id="trialMethod"><option>Blind paired comparison</option><option>Triangle test</option><option>9-point hedonic test</option><option>Descriptive analysis</option></select></div>
+      <div class="field"><label>Panel type</label><select id="panelType"><option>Consumer panel</option><option>Trained sensory panel</option><option>Internal R&D panel</option><option>Family tasting</option></select></div>
+      <div class="field"><label>Panel size</label><input type="number" id="panelSize" value="24" min="1"></div>
+      <div class="field"><label>Sample codes</label><input id="sampleCodes" value="A17, B24, C31"></div>
+      <div class="field"><label>Serving temperature (°C)</label><input type="number" id="serveTemp" value="8"></div>
+    </div><button class="btn primary" style="margin-top:13px" onclick="createTrial()">Create session</button><div id="trialMessage" class="notice hide" style="margin-top:12px"></div></div>
+    <div class="card"><h3 class="sectiontitle">Capture a tasting response</h3><div class="formgrid">
+      <div class="field"><label>Sample code</label><select id="tasteSample"><option>A17</option><option>B24</option><option>C31</option></select></div>
+      <div class="field"><label>Panelist ID (anonymous)</label><input id="panelist" value="P-001"></div>
+      <div class="field"><label>Overall liking (1–9)</label><input id="liking" type="number" min="1" max="9" value="7"></div>
+      <div class="field"><label>Purchase intent</label><select id="purchaseIntent"><option>Maybe</option><option>Definitely would buy</option><option>Probably would buy</option><option>Probably would not buy</option><option>Definitely would not buy</option></select></div>
+      <div class="field full"><label>Comments</label><textarea id="tasteComment" placeholder="e.g. pleasant aroma, slightly lingering aftertaste"></textarea></div>
+    </div><button class="btn primary" style="margin-top:13px" onclick="saveResponse()">Save response</button></div>
+  </div>
+  <div class="card" style="margin-top:16px"><h3 class="sectiontitle">Session & response log</h3><div id="trialLog" class="tablewrap"><div class="empty">No live session created yet. Create a session to begin.</div></div></div>
+</section>
+
+<section class="panel" id="page-sensory">
+  <div class="pagehead"><div><div class="eyebrow">Digital sensory twin</div><h1>Sensory Twin</h1><p class="sub">Compare the reference sensory fingerprint with predicted or measured product behaviour.</p></div></div>
+  <div class="grid layout2">
+    <div class="card"><h3 class="sectiontitle">Sensory fingerprint comparison</h3><p class="muted">Adjust the candidate profile using tasting observations. Scores are on a 0–10 descriptive scale.</p><div id="candidateSensory" class="sensory"></div><div class="divider"></div><div id="fingerprint"></div><div id="sensoryDecision" class="notice" style="margin-top:12px">Adjust the candidate scores to compare them with the reference.</div><div class="notice">Illustrative profiles for demonstration. Actual sensory fingerprints require standardized panel methods and validated measurements.</div></div>
+    <div class="card"><h3 class="sectiontitle">Sensory timeline</h3><p class="muted">How the experience evolves during consumption.</p><div class="barrow"><span>First impression</span><div class="bar"><i style="width:82%"></i></div><b>8.2</b></div><div class="barrow"><span>Mid-palate</span><div class="bar"><i style="width:75%"></i></div><b>7.5</b></div><div class="barrow"><span>Finish</span><div class="bar"><i style="width:61%"></i></div><b>6.1</b></div><div class="barrow"><span>Aftertaste</span><div class="bar"><i style="width:43%"></i></div><b>4.3</b></div><div class="divider"></div><h3 class="sectiontitle">Twin health</h3><p><span class="tag green">Reference linked</span> Mango beverage v1.3</p><p><span class="tag orange">Model confidence: medium</span> Limited measured trials</p><p><span class="tag blue">Next action</span> Validate aroma persistence at 10°C</p></div>
+  </div>
+</section>
+
+<section class="panel" id="page-nutrition">
+  <div class="pagehead"><div><div class="eyebrow">Quality & governance</div><h1>Nutrition & Safety Review</h1><p class="sub">Screen formulation risks and route claims or compliance questions to qualified review.</p></div></div>
+  <div class="grid layout2">
+    <div class="card"><h3 class="sectiontitle">Nutrition calculator</h3><div class="formgrid">
+      <div class="field"><label>Serving size (g/ml)</label><input id="serving" type="number" value="200"></div>
+      <div class="field"><label>Energy per 100g (kcal)</label><input id="energy" type="number" value="58"></div>
+      <div class="field"><label>Total sugars per 100g (g)</label><input id="sugars" type="number" value="11"></div>
+      <div class="field"><label>Protein per 100g (g)</label><input id="protein" type="number" value=".4"></div>
+      <div class="field"><label>Sodium per 100g (mg)</label><input id="sodium" type="number" value="18"></div>
+    </div><button class="btn primary" style="margin-top:12px" onclick="calcNutrition()">Calculate serving nutrition</button><div id="nutritionResult" class="result hide" style="margin-top:12px"></div></div>
+    <div class="card"><h3 class="sectiontitle">Safety and compliance gates</h3>
+      <p><span class="tag orange">Review required</span> Ingredient allergen declarations</p>
+      <p><span class="tag orange">Review required</span> Sweetener permitted-use and maximum level</p>
+      <p><span class="tag blue">Evidence required</span> Shelf-life and microbiological validation</p>
+      <p><span class="tag blue">Evidence required</span> Packaging compatibility</p>
+      <p><span class="tag red">Not approved</span> Nutrition / health claim substantiation</p>
+      <div class="warning">This screen is a workflow checklist, not a regulatory certification. Requirements depend on product category, jurisdiction, dose, process and current law. Obtain qualified food-safety and regulatory review.</div>
+    </div>
+  </div>
+</section>
+
+<section class="panel" id="page-cost">
+  <div class="pagehead"><div><div class="eyebrow">Commercial intelligence</div><h1>Cost & Yield Calculator</h1><p class="sub">Understand ingredient cost, process yield and cost per finished unit.</p></div></div>
+  <div class="grid layout2">
+    <div class="card"><h3 class="sectiontitle">Batch economics</h3><div class="formgrid">
+      <div class="field"><label>Batch input (kg)</label><input id="costBatch" type="number" value="100"></div>
+      <div class="field"><label>Expected process yield (%)</label><input id="yieldPct" type="number" value="96"></div>
+      <div class="field"><label>Processing cost per batch (₹)</label><input id="processCost" type="number" value="1200"></div>
+      <div class="field"><label>Packaging cost per unit (₹)</label><input id="packCost" type="number" value="2.5"></div>
+      <div class="field"><label>Pack size (kg)</label><input id="packSize" type="number" value=".2"></div>
+      <div class="field"><label>Target selling price per unit (₹)</label><input id="sellPrice" type="number" value="18"></div>
+    </div><button class="btn primary" style="margin-top:12px" onclick="calcCost()">Calculate economics</button></div>
+    <div class="card"><h3 class="sectiontitle">Cost summary</h3><div id="costResult" class="empty">Run the calculator to view batch economics.</div></div>
+  </div>
+</section>
+
+<section class="panel" id="page-home">
+  <div class="pagehead"><div><div class="eyebrow">Home Kitchen · simple mode</div><h1>Good food, fewer guesses.</h1><p class="sub">Use what you have, adapt recipes to your family and understand likely taste changes.</p></div></div>
+  <div class="homehero"><div><div class="eyebrow" style="color:#a9e8dd">Your everyday cooking assistant</div><h2>What would you like to cook today?</h2><p>Tell TasteTwin what is in your kitchen, your preferences and any dietary restrictions. Get practical suggestions with clear substitution cautions.</p></div><button class="btn" onclick="go('pantry')">Open my pantry →</button></div>
+  <div class="quickgrid">
+    <button class="quick" onclick="homePrompt('substitute')"><span class="qico">⇄</span><b>Replace an ingredient</b><small>Out of butter, milk, eggs or spices?</small></button>
+    <button class="quick" onclick="homePrompt('leftover')"><span class="qico">🥗</span><b>Use leftovers</b><small>Find meal ideas using food you already have.</small></button>
+    <button class="quick" onclick="homePrompt('taste')"><span class="qico">◈</span><b>Adjust family taste</b><small>Make a dish less spicy, sour or sweet.</small></button>
+    <button class="quick" onclick="homePrompt('budget')"><span class="qico">₹</span><b>Reduce meal cost</b><small>Find practical lower-cost alternatives.</small></button>
+    <button class="quick" onclick="homePrompt('nutrition')"><span class="qico">♡</span><b>Meal balance</b><small>Explore nutrition-aware meal changes.</small></button>
+    <button class="quick" onclick="homePrompt('scale')"><span class="qico">⚖</span><b>Scale a recipe</b><small>Adjust portions without guesswork.</small></button>
+  </div>
+  <div class="grid layout2" style="margin-top:16px">
+    <div class="card"><h3 class="sectiontitle">Ask your kitchen assistant</h3><div class="field"><label>What are you making?</label><input id="homeDish" placeholder="e.g. vegetable pulao, dosa, chocolate cake"></div><div class="formgrid" style="margin-top:10px"><div class="field"><label>What do you have / want to change?</label><input id="homeIngredients" placeholder="e.g. no curd, have lemon"></div><div class="field"><label>Preference</label><select id="homePreference"><option>Balanced family taste</option><option>Less spicy</option><option>Less sweet</option><option>Less sour</option><option>Higher protein</option><option>Lower cost</option><option>Vegetarian</option><option>Vegan</option></select></div></div><button class="btn primary" style="margin-top:12px" onclick="homeAdvice()">Get cooking suggestions</button><p class="muted" style="font-size:11px;margin:7px 0 0">Offline cooking guide · suggestions use your entries and built-in food rules; no AI connection.</p><div id="homeAnswer" class="result hide" style="margin-top:12px"></div></div>
+    <div class="card"><h3 class="sectiontitle">Family taste profile</h3><p class="muted">Set household preferences. These guide suggestions; they are not medical or allergy screening.</p><div class="sensory" id="homeSliders"></div><div class="field" style="margin-top:12px"><label>Dietary restrictions / allergies (write clearly)</label><input id="homeRestrictions" placeholder="e.g. peanut allergy, lactose intolerance"></div><button class="btn soft" style="margin-top:12px" onclick="toast('Family preferences saved in this demo session.')">Save family preferences</button></div>
+  </div>
+</section>
+
+<section class="panel" id="page-pantry">
+  <div class="pagehead"><div><div class="eyebrow">Home Kitchen</div><h1>My Pantry & Meals</h1><p class="sub">Track what is available and turn ingredients into practical meal ideas.</p></div></div>
+  <div class="grid layout2">
+    <div class="card"><h3 class="sectiontitle">Pantry ingredients</h3><div class="formgrid"><div class="field"><label>Ingredient</label><input id="pantryItem" placeholder="e.g. tomatoes"></div><div class="field"><label>Quantity / note</label><input id="pantryQty" placeholder="4 pieces"></div></div><button class="btn primary" style="margin-top:10px" onclick="addPantry()">＋ Add to pantry</button><div id="pantryList" style="margin-top:14px" class="pillrow"><span class="chip">Rice · 1 kg</span><span class="chip">Tomato · 4 pcs</span><span class="chip">Onion · 3 pcs</span><span class="chip">Curd · 500 g</span><span class="chip">Carrot · 2 pcs</span></div></div>
+    <div class="card"><h3 class="sectiontitle">Meal idea generator</h3><p class="muted">Uses your pantry list and preference profile to suggest ideas. Check freshness and food safety before use.</p><div class="field"><label>Meal type</label><select id="mealType"><option>Any meal</option><option>Breakfast</option><option>Lunch</option><option>Dinner</option><option>Snack</option></select></div><div class="field" style="margin-top:10px"><label>Time available</label><select id="mealTime"><option>15 minutes</option><option>30 minutes</option><option>45 minutes</option><option>1 hour or more</option></select></div><button class="btn primary" style="margin-top:12px" onclick="mealIdeas()">Suggest meal ideas</button><div id="mealResult" style="margin-top:12px"></div></div>
+  </div>
+</section>
+
+<section class="panel" id="page-masters">
+  <div class="pagehead"><div><div class="eyebrow">ERP functional design</div><h1>Masters, Rules & Governance</h1><p class="sub">Core records and controls required to make the product reliable, auditable and extensible.</p></div></div>
+  <div class="grid layout2">
+    <div class="card"><h3 class="sectiontitle">Master data catalogue</h3><div class="tablewrap"><table><thead><tr><th>Master</th><th>Key fields</th><th>Owner</th></tr></thead><tbody>
+      <tr><td>Ingredient Master</td><td>Code, function, allergens, supplier, cost, units, properties</td><td>R&D / Procurement</td></tr>
+      <tr><td>Product Master</td><td>Category, market, target profile, pack, status</td><td>Product Owner</td></tr>
+      <tr><td>Sensory Attribute</td><td>Attribute, scale, method, descriptor, weight</td><td>Sensory Lead</td></tr>
+      <tr><td>Consumer Segment</td><td>Market, study cohort, consent, preference data</td><td>Research Lead</td></tr>
+      <tr><td>Process Master</td><td>Step, temperature, time, equipment, critical limits</td><td>Production / QA</td></tr>
+      <tr><td>Regulatory Rule</td><td>Jurisdiction, category, threshold, source, effective date</td><td>Regulatory</td></tr>
+      <tr><td>AI Model Registry</td><td>Model, version, training scope, metrics, approval</td><td>AI / Data Owner</td></tr>
+      <tr><td>Unit & Conversion</td><td>Unit, dimension, conversion, density dependency</td><td>System Admin</td></tr>
+    </tbody></table></div></div>
+    <div class="card"><h3 class="sectiontitle">Transaction lifecycle</h3><div class="pillrow"><span class="tag">Draft</span><span class="tag blue">AI analysed</span><span class="tag orange">Trial required</span><span class="tag orange">Under review</span><span class="tag green">Approved</span><span class="tag red">Rejected</span><span class="tag">Obsolete</span></div><div class="divider"></div><h3 class="sectiontitle">Role permissions</h3><table><thead><tr><th>Role</th><th>Create</th><th>Review</th><th>Approve</th></tr></thead><tbody><tr><td>Chef / R&D</td><td>Formulation, trial</td><td>Own results</td><td>Limited</td></tr><tr><td>Sensory panel</td><td>Responses</td><td>Own responses</td><td>No</td></tr><tr><td>QA / Regulatory</td><td>Checks, evidence</td><td>All safety gates</td><td>QA release</td></tr><tr><td>R&D Head</td><td>All R&D records</td><td>All records</td><td>Formulation approval</td></tr><tr><td>Home user</td><td>Personal recipes</td><td>Own recipes</td><td>Personal only</td></tr><tr><td>System admin</td><td>Configuration</td><td>Audit</td><td>Access control</td></tr></tbody></table></div>
+  </div>
+  <div class="card" style="margin-top:16px"><h3 class="sectiontitle">Mandatory business validations</h3><div class="grid layout3"><div><b>Formulation</b><p class="muted">Ingredient quantities, units, batch reconciliation, revision control and effective dates.</p></div><div><b>Food safety</b><p class="muted">Allergen cross-contact, permitted use, dose limits, process validation and traceable evidence.</p></div><div><b>AI governance</b><p class="muted">Model version, input lineage, confidence, approval status, drift and human override.</p></div><div><b>Experiments</b><p class="muted">Blind codes, randomized serving order, panel consent, protocol and statistical method.</p></div><div><b>Commercial</b><p class="muted">Cost basis, currency, supplier validity, yield, packaging and overhead allocation.</p></div><div><b>Home use</b><p class="muted">Allergy warnings, safe storage, cooking temperatures where relevant and clear non-medical guidance.</p></div></div></div>
+</section>
+
+<section class="panel" id="page-reports">
+  <div class="pagehead"><div><div class="eyebrow">Decision support</div><h1>Reports & Decisions</h1><p class="sub">Translate formulation activity into accountable product and commercial decisions.</p></div><div class="actions"><button class="btn" onclick="window.print()">Print report</button><button class="btn primary" onclick="toast('Demo report prepared for printing.')">Export summary</button></div></div>
+  <div class="grid layout3">
+    <div class="card"><h3 class="sectiontitle">R&D performance</h3><div class="statval">32</div><p class="muted">Trials this quarter</p><div class="barrow"><span>Successful</span><div class="bar"><i style="width:68%"></i></div><b>68%</b></div><div class="barrow"><span>Rework</span><div class="bar"><i style="width:22%;background:#ed9b45"></i></div><b>22%</b></div></div>
+    <div class="card"><h3 class="sectiontitle">Commercial impact</h3><div class="statval">₹4.8L</div><p class="muted">Illustrative annualized cost opportunity</p><div class="barrow"><span>Ingredient</span><div class="bar"><i style="width:72%"></i></div><b>72%</b></div><div class="barrow"><span>Yield</span><div class="bar"><i style="width:28%"></i></div><b>28%</b></div></div>
+    <div class="card"><h3 class="sectiontitle">Model governance</h3><div class="statval">Medium</div><p class="muted">Current demo confidence status</p><p><span class="tag orange">Human validation required</span></p><p class="muted">Monitor prediction error by category, ingredient family and market segment.</p></div>
+  </div>
+  <div class="card" style="margin-top:16px"><h3 class="sectiontitle">Decision register</h3><div class="tablewrap"><table><thead><tr><th>Decision</th><th>Evidence</th><th>Owner</th><th>Next action</th><th>Status</th></tr></thead><tbody><tr><td>Mango drink sugar reduction</td><td>Rule-based candidates + no lab result</td><td>R&D Head</td><td>Run bench trial</td><td><span class="tag orange">Pending</span></td></tr><tr><td>Tomato sauce v2.1</td><td>Panel + QA review</td><td>QA Lead</td><td>Release documentation</td><td><span class="tag green">Approved</span></td></tr><tr><td>Oat beverage texture</td><td>Low-confidence model</td><td>Product Lab</td><td>Collect more samples</td><td><span class="tag blue">In progress</span></td></tr></tbody></table></div></div>
+</section>
+<div class="footer">TasteTwin concept prototype · All sample values and AI outputs are illustrative · Not validated for commercial food production</div>
+</div>
+</main>
+</div>
+<div class="toast" id="toast"></div>
+<script>
+const pages={dashboard:"Overview",formulator:"Formulation Studio",substitute:"Ingredient Intelligence",experiments:"Experiments & Tasting",sensory:"Sensory Twin",nutrition:"Nutrition & Safety",cost:"Cost & Yield",home:"Home Kitchen",pantry:"My Pantry & Meals",masters:"Masters & Rules",reports:"Reports & Decisions"};
+function go(p){document.querySelectorAll('.panel').forEach(x=>x.classList.remove('active'));document.getElementById('page-'+p).classList.add('active');document.querySelectorAll('.nav button').forEach(x=>x.classList.toggle('active',x.dataset.page===p));document.getElementById('crumb').textContent=pages[p];window.scrollTo(0,0)}
+document.querySelectorAll('.nav button').forEach(b=>b.addEventListener('click',()=>go(b.dataset.page)));
+document.getElementById('role').addEventListener('change',e=>{const v=e.target.value;if(v==='home')go('home');else if(v==='admin')go('masters');else go('dashboard')});
+function toast(msg){let t=document.getElementById('toast');t.textContent=msg;t.style.display='block';clearTimeout(window.toastTimer);window.toastTimer=setTimeout(()=>t.style.display='none',2800)}
+const attrs=[['Sweetness',7.8],['Acidity',5.4],['Bitterness',2.2],['Fruit aroma',8.6],['Body / mouthfeel',6.8],['Aftertaste',4.2]];
+function buildSliders(target,values){document.getElementById(target).innerHTML=attrs.map((a,i)=>`<div class="sensoryitem"><label>${a[0]} <b id="${target}v${i}">${values[i]??a[1]}</b></label><input type="range" min="0" max="10" step=".1" value="${values[i]??a[1]}" oninput="document.getElementById('${target}v${i}').textContent=this.value"></div>`).join('')}
+buildSliders('targetSliders',attrs.map(x=>x[1]));buildSliders('homeSliders',[6,5,2,7,6,4]);
+function addIngredient(){let tr=document.createElement('tr');tr.innerHTML='<td><input value="New ingredient" class="ingname"></td><td><input type="number" value="0" step=".01" class="ingqty"></td><td><input type="number" value="0" class="ingcost"></td><td>Other</td><td><button class="linkbtn" onclick="removeRow(this)">Remove</button></td>';document.getElementById('ingredientRows').appendChild(tr)}
+function removeRow(btn){btn.closest('tr').remove()}
+function ingredients(){return [...document.querySelectorAll('#ingredientRows tr')].map(r=>({name:r.querySelector('.ingname').value.trim(),qty:+r.querySelector('.ingqty').value,cost:+r.querySelector('.ingcost').value}))}
+function runFormulation(){
+ const rows=ingredients(),batch=+document.getElementById('batch').value,qty=rows.reduce((s,x)=>s+x.qty,0),cost=rows.reduce((s,x)=>s+x.qty*x.cost,0),target=+document.getElementById('targetCost').value;
+ if(!rows.length||rows.some(x=>!x.name||x.qty<0||x.cost<0)||batch<=0){toast('Check ingredient names, quantities, costs and batch size.');return}
+ const variance=Math.abs(qty-batch),perkg=cost/(qty||1),match=Math.max(62,Math.min(97,Math.round(95-Math.abs(qty-batch)*.8-(document.getElementById('objective').value.includes('Reduce sugar')?2:0))));
+ const box=document.getElementById('formResult');box.classList.remove('hide');
+ box.innerHTML=`<div class="eyebrow">Formulation check · Rule-based demonstration</div><h2 style="margin:5px 0 14px;color:var(--navy)">${document.getElementById('productName').value||'Untitled formulation'} · Analysis result</h2><div class="grid layout3"><div class="result"><div class="muted">Ingredient total</div><div class="score">${qty.toFixed(2)} kg</div><small>Target batch ${batch.toFixed(2)} kg</small></div><div class="result"><div class="muted">Estimated ingredient cost</div><div class="score">₹${perkg.toFixed(2)}/kg</div><small>₹${cost.toFixed(2)} total ingredient cost</small></div><div class="result"><div class="muted">Illustrative similarity indicator</div><div class="score">${match}%</div><small>Not a trained model prediction</small></div></div><div class="${variance>Math.max(.05,batch*.001)?'warning':'notice'}" style="margin-top:13px">${variance>Math.max(.05,batch*.001)?`Batch reconciliation issue: ingredients total ${qty.toFixed(2)} kg, difference ${variance.toFixed(2)} kg. Resolve before analysis can be treated as complete.`:'Batch quantity reconciles within the demo tolerance. Confirm density, process loss and actual weighment in production.'}</div><div class="grid layout2" style="margin-top:13px"><div><h3 class="sectiontitle">Formulation review notes</h3><ul><li>Review the ingredient responsible for the largest cost contribution.</li><li>Check functional equivalence before replacing a sweetener or stabilizer.</li><li>Compare predicted sensory response with a physical bench sample.</li><li>Record model version and evidence for each candidate.</li></ul></div><div><h3 class="sectiontitle">Recommended next steps</h3><p>1. Save as draft revision.</p><p>2. Run ingredient and allergen screening.</p><p>3. Create controlled laboratory trial.</p><p>4. Collect blind-panel data before approval.</p><button class="btn primary" onclick="go('experiments')">Create tasting trial →</button></div></div>`;
+ box.scrollIntoView({behavior:'smooth',block:'start'});
+}
+function resetForm(){document.getElementById('productName').value='';document.getElementById('formResult').classList.add('hide');toast('Form cleared.')}
+function esc(v){return String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function askAssistant(){
+ const q=document.getElementById('askAI').value.trim();
+ if(!q){toast('Enter a formulation question first.');return}
+ const t=q.toLowerCase(); let title='Suggested formulation checks', points=[];
+ if(/sugar|sweet|brix/.test(t)) points=['Identify the sugar function: sweetness, bulk, solids, water activity and preservation may all be affected.','Compare options such as high-intensity sweetener, polyol or fruit solids only for the intended product category.','Rebalance body, acidity and flavour; do not assume sweetness replacement is a 1:1 mass replacement.','Measure °Brix, pH and finished-product sensory response in a controlled bench trial.'];
+ else if(/sour|acid|pH/.test(t)) points=['Check the acid source and measured pH; perceived sourness is not the same as pH.','Review titratable acidity, buffering ingredients and product category before changing acid dosage.','Run small stepwise trials and assess flavour balance and process/safety requirements.'];
+ else if(/texture|thick|body|mouthfeel|viscos/.test(t)) points=['Identify the required texture function: viscosity, suspension, gelation, creaminess or crispness.','Review solids, water balance, starch/protein/fat and stabilizer interactions.','Check processing shear, temperature, hydration time and cooling conditions.','Measure texture or viscosity using a defined method and compare after storage.'];
+ else if(/aroma|flavou?r|taste|aftertaste/.test(t)) points=['Separate aroma, basic taste, mouthfeel and aftertaste in the sensory brief.','Check ingredient quality, dosage, processing temperature and volatile loss.','Use coded samples and a consistent 0–10 descriptive scale; collect panel comments.'];
+ else if(/cost|cheap|margin/.test(t)) points=['Rank ingredients by cost contribution (quantity × cost per unit).','Check whether a lower-cost alternative performs the same technical function.','Include yield loss, labour, utilities, packaging, overhead, freight and taxes in the commercial model.','Validate cost changes against a physical trial and finished-product specification.'];
+ else if(/allergen|vegan|gluten|dairy|safety/.test(t)) points=['Check the full ingredient and processing-aid declarations, including compound ingredients.','Review supplier specifications and cross-contact controls.','Confirm local regulatory requirements and QA approval; this tool cannot certify safety.'];
+ else points=['Define the product category, target consumer and intended change.','Identify the ingredient function before selecting an alternative.','Check formulation balance, process conditions, cost, nutrition and allergen impact.','Create a controlled trial and compare measured sensory results before approval.'];
+ document.getElementById('aiAnswer').innerHTML=`<div class="result"><b>${title}</b><ol>${points.map(x=>`<li>${esc(x)}</li>`).join('')}</ol><span class="tag orange">Offline rule-based guidance · Not AI · Validate with R&D / QA</span></div>`;
+}
+const subData={
+'Sugar':[['Stevia glycosides','High sweetness; little bulk; possible lingering/licorice notes. Requires careful dose and formulation review.','High intensity · low use level','Check permitted use and aftertaste'],['Erythritol','Provides bulk and cooling effect; sweetness lower than sugar. Texture and crystallization may change.','Bulk sweetener','Check tolerance, label and product category'],['Date paste','Adds sweetness, colour, flavour and solids; not a neutral sugar replacement.','Whole-food ingredient','Changes colour, flavour, solids and nutrition']],
+'Butter':[['Neutral vegetable oil','Can replace fat in some applications but removes butter flavour and changes solid-fat behaviour.','Liquid fat','Not a direct pastry replacement'],['Margarine','Can provide plastic fat functionality; performance varies by formulation.','Structured fat','Check water content and trans-fat profile'],['Apple puree','Can replace part of fat in selected moist bakes; changes sweetness, moisture and texture.','Moisture / solids','Recipe-specific trial required']],
+'Milk':[['Unsweetened soy beverage','Useful dairy-free liquid in many recipes; protein and flavour differ.','Plant beverage','Check soy allergen and curdling behaviour'],['Oat beverage','Mild flavour and carbohydrate contribution; protein and foaming differ.','Plant beverage','Check added sugar and stabilizers'],['Coconut milk','Adds strong coconut flavour and higher fat in many formats.','Flavour / fat','Not neutral; high sensory impact']],
+'Wheat flour':[['Rice flour blend','Can provide gluten-free structure only with suitable starch/hydrocolloid design.','Gluten-free blend','Not 1:1 in bread or cake'],['Oat flour','Adds oat flavour, fibre and different water absorption.','Whole grain flour','Check certified gluten-free status if needed'],['Almond flour','Adds fat, protein and nut flavour; different structure and allergen profile.','Nut flour','Contains tree nuts']],
+'Egg':[['Aquafaba','Can provide foaming in selected applications; performance varies.','Foaming aid','Not a universal binder replacement'],['Flax gel','Useful binder in some baked products; adds colour and flavour.','Binder','Not equivalent for aeration'],['Commercial egg replacer','Designed for defined functions; check application-specific instructions.','Functional blend','Review label and supplier specification']],
+'Salt':[['Potassium chloride blend','Can reduce sodium but may introduce bitter or metallic notes.','Salt replacer','Potassium suitability requires review'],['Herbs and spices','Increase flavour complexity but do not replicate salt function.','Flavour enhancement','May not preserve salt-dependent process functions']],
+'Oil':[['High-oleic sunflower oil','Alternative liquid oil with different oxidative stability.','Liquid fat','Check process temperature and shelf life'],['Olive oil','Adds characteristic flavour and has application-specific heat behaviour.','Liquid fat','Sensory impact varies by grade']],
+'Mango concentrate':[['Mango puree','Provides fruit solids and flavour; Brix and acidity differ.','Fruit base','Recalculate solids and water balance'],['Other fruit concentrate','Can maintain colour or fruit intensity but changes flavour identity.','Fruit base','Not sensory-equivalent']]
+};
+function findSubstitutes(){let key=document.getElementById('subIngredient').value,arr=subData[key]||subData['Sugar'],reason=document.getElementById('subReason').value,rule=document.getElementById('subRule').value,context=document.getElementById('subContext').value,notes=document.getElementById('subNotes').value;let out=document.getElementById('subResult');out.innerHTML=arr.map((x,i)=>`<div class="card"><div class="eyebrow">Candidate ${i+1} · ${esc(context)}</div><h3 class="sectiontitle">${esc(x[0])}</h3><p>${esc(x[1])}</p><div class="pillrow"><span class="chip">${esc(x[2])}</span><span class="chip">${esc(reason)}</span></div><div class="warning" style="margin-top:12px">${esc(x[3])} · Verify ${esc(rule.toLowerCase())} before use.</div>${notes?`<p class="muted"><b>Context:</b> ${esc(notes)}</p>`:''}<button class="btn small" style="margin-top:10px" onclick="toast('Candidate added to comparison shortlist (demo).')">Add to shortlist</button></div>`).join('')}
+let trials=[],responses=[];
+function createTrial(){let name=document.getElementById('trialName').value||'Untitled session',size=+document.getElementById('panelSize').value;if(size<1){toast('Panel size must be at least one.');return}trials.push({name,method:document.getElementById('trialMethod').value,panel:document.getElementById('panelType').value,size,codes:document.getElementById('sampleCodes').value});let m=document.getElementById('trialMessage');m.classList.remove('hide');m.innerHTML=`Session <b>${name}</b> created with ${size} planned panelists. Use anonymous panel IDs and randomized serving order. This demo does not randomize samples automatically.`;renderTrials()}
+function saveResponse(){let score=+document.getElementById('liking').value;if(score<1||score>9){toast('Overall liking must be between 1 and 9.');return}responses.push({sample:document.getElementById('tasteSample').value,panelist:document.getElementById('panelist').value,score,intent:document.getElementById('purchaseIntent').value,comment:document.getElementById('tasteComment').value});renderTrials();toast('Tasting response saved in this demo session.')}
+function renderTrials(){let el=document.getElementById('trialLog');if(!trials.length&&!responses.length)return;el.innerHTML=`${trials.map(t=>`<p><b>${t.name}</b> · ${t.method} · ${t.panel} · ${t.size} planned panelists · Samples: ${t.codes}</p>`).join('')}<table><thead><tr><th>Sample</th><th>Panelist</th><th>Liking</th><th>Purchase intent</th><th>Comment</th></tr></thead><tbody>${responses.map(r=>`<tr><td>${r.sample}</td><td>${r.panelist}</td><td>${r.score}/9</td><td>${r.intent}</td><td>${r.comment||'—'}</td></tr>`).join('')}</tbody></table>`}
+function newTrial(){go('experiments');document.getElementById('trialName').focus()}
+const sensoryNames=['Sweetness','Acidity','Bitterness','Fruit aroma','Body / mouthfeel','Aftertaste'];
+const referenceScores=[7.8,5.4,2.2,8.6,6.8,4.2];
+let candidateScores=[7.4,5.6,2.8,8.1,6.3,5.1];
+function buildFingerprint(){
+ const controls=document.getElementById('candidateSensory');
+ if(controls) controls.innerHTML=sensoryNames.map((n,i)=>`<div class="sensoryitem"><label>${n}<b id="candVal${i}">${candidateScores[i].toFixed(1)}</b></label><input aria-label="Candidate ${n}" type="range" min="0" max="10" step=".1" value="${candidateScores[i]}" oninput="candidateScores[${i}]=Number(this.value);document.getElementById('candVal${i}').textContent=Number(this.value).toFixed(1);renderFingerprint()"></div>`).join('');
+ renderFingerprint();
+}
+function renderFingerprint(){
+ const el=document.getElementById('fingerprint');
+ if(!el)return;
+ el.innerHTML=sensoryNames.map((n,i)=>{let a=referenceScores[i],b=candidateScores[i];return `<div style="margin:13px 0"><div style="display:flex;justify-content:space-between;font-size:12px"><b>${n}</b><span class="muted">Reference ${a.toFixed(1)} · Candidate ${b.toFixed(1)}</span></div><div class="bar" style="margin-top:6px;position:relative"><i style="width:${a*10}%;background:#77934e"></i></div><div class="bar" style="margin-top:4px"><i style="width:${b*10}%;background:#e47b3d"></i></div></div>`}).join('')+'<div class="pillrow"><span class="chip">● Reference</span><span class="chip">● Candidate</span></div>';
+ const mae=candidateScores.reduce((z,v,i)=>z+Math.abs(v-referenceScores[i]),0)/referenceScores.length;
+ const decision=document.getElementById('sensoryDecision');
+ if(decision) decision.innerHTML=`Mean absolute sensory gap: <b>${mae.toFixed(2)} points / 10</b>. ${mae<=0.5?'Close descriptive match in this illustrative profile.':mae<=1.5?'Moderate differences: review the largest gaps and run a panel trial.':'Material sensory differences: revise the candidate and validate with a trained panel.'}<br><small>This is a simple profile-distance calculation, not a prediction of consumer liking or product quality.</small>`;
+}
+buildFingerprint();
+function calcNutrition(){let f=+document.getElementById('serving').value/100,e=+document.getElementById('energy').value*f,s=+document.getElementById('sugars').value*f,p=+document.getElementById('protein').value*f,n=+document.getElementById('sodium').value*f;let el=document.getElementById('nutritionResult');el.classList.remove('hide');el.innerHTML=`<h3>Estimated per serving</h3><div class="grid layout3"><div><b>${e.toFixed(1)} kcal</b><br><small>Energy</small></div><div><b>${s.toFixed(1)} g</b><br><small>Total sugars</small></div><div><b>${p.toFixed(1)} g</b><br><small>Protein</small></div><div><b>${n.toFixed(1)} mg</b><br><small>Sodium</small></div></div><p class="muted">Calculated by scaling entered per-100g values. Values are only as accurate as source data and labelling rules.</p>`}
+function calcCost(){let batch=+document.getElementById('costBatch').value,y=+document.getElementById('yieldPct').value/100,proc=+document.getElementById('processCost').value,pack=+document.getElementById('packCost').value,size=+document.getElementById('packSize').value,price=+document.getElementById('sellPrice').value,ing=ingredients().reduce((s,x)=>s+x.qty*x.cost,0),finished=batch*y,units=finished/size,unitCost=(ing+proc)/units+pack,margin=price?((price-unitCost)/price*100):0;document.getElementById('costResult').innerHTML=`<div class="statlabel">Finished output</div><div class="statval">${finished.toFixed(2)} kg</div><p>Estimated packs: <b>${units.toFixed(0)}</b></p><p>Ingredient + process cost: <b>₹${(ing+proc).toFixed(2)}</b></p><p>Estimated cost per pack: <b>₹${unitCost.toFixed(2)}</b></p><p>Indicative gross margin at entered selling price: <b>${margin.toFixed(1)}%</b></p><div class="warning">Demo estimate. Include labour, utilities, overhead, wastage, taxes, freight, depreciation and channel margins before commercial decisions.</div>`}
+function homePrompt(type){let q={substitute:'I need to replace an ingredient in my recipe.',leftover:'Suggest a meal using my leftovers.',taste:'Help me adjust the taste for my family.',budget:'Suggest a lower-cost version of my meal.',nutrition:'Help me balance my meal.',scale:'Help me scale a recipe for more people.'};document.getElementById('homeDish').value=q[type];document.getElementById('homeDish').focus()}
+function homeAdvice(){
+ let dish=document.getElementById('homeDish').value.trim(),change=document.getElementById('homeIngredients').value.trim(),pref=document.getElementById('homePreference').value,restr=document.getElementById('homeRestrictions').value;
+ let el=document.getElementById('homeAnswer');el.classList.remove('hide');
+ const t=(dish+' '+change+' '+pref).toLowerCase(),tips=[];
+ if(/less spicy|spicy|chilli|chili/.test(t)) tips.push('Reduce chilli gradually and taste after each small addition. Add bulk ingredients or a suitable dairy/coconut element only if it fits the dish.');
+ if(/less sour|sour|lemon|tamarind|tomato/.test(t)) tips.push('Reduce the souring ingredient in the next batch. A little fat or mild bulk can soften perception; avoid correcting sourness with large amounts of sugar.');
+ if(/less sweet|sugar|sweet/.test(t)) tips.push('Reduce added sweetener in small steps. In baking, sugar also affects moisture, browning and structure, so do not remove it without adjusting the recipe.');
+ if(/butter|milk|curd|dairy/.test(t)) tips.push('Choose a replacement based on its role (fat, liquid, acidity or protein). Check flavour, water content and dietary suitability.');
+ if(/egg/.test(t)) tips.push('For binding, consider a hydrated flax/chia mixture; for foam or lift, the replacement is different. Egg substitutes are recipe-specific.');
+ if(/scale|people|serving|portion/.test(t)) tips.push('Scale each ingredient by: new servings ÷ original servings. Keep salt, chilli and leavening conservative initially, then adjust by tasting.');
+ if(/high protein|protein/.test(t)) tips.push('Add a suitable protein source such as pulses, beans, lentils, dairy or tofu according to the dish and dietary needs.');
+ if(/lower cost|budget|cost/.test(t)) tips.push('Use seasonal vegetables and locally available pulses; preserve the main flavour profile and avoid replacing ingredients that provide essential structure.');
+ if(!tips.length) tips.push('Change one major ingredient or seasoning at a time, start with a small test portion, taste, and adjust gradually.');
+ const pantryText=typeof pantry!=='undefined'?pantry.join(', '):'';
+ const safeNote=restr?`Restriction noted: ${restr}. Check every ingredient label and prevent cross-contact; this guide cannot certify an allergen-safe meal.`:'No allergy or restriction was entered. Check ingredient labels and cross-contact before serving.';
+ el.innerHTML=`<div class="result"><h3>Kitchen suggestions for ${esc(dish||'your dish')}</h3><p><b>Preference:</b> ${esc(pref)}</p><p><b>Your ingredients / change:</b> ${esc(change||'No additional details entered.')}</p><ol>${tips.map(x=>`<li>${esc(x)}</li>`).join('')}</ol>${pantryText?`<p><b>Pantry on file:</b> ${esc(pantryText)}</p>`:''}<div class="warning"><b>Food safety:</b> ${esc(safeNote)} Follow safe cooking, cooling and storage practices.</div><span class="tag orange">Offline rule-based cooking guidance · Not AI or medical advice</span></div>`;
+}
+let pantry=['Rice · 1 kg','Tomato · 4 pcs','Onion · 3 pcs','Curd · 500 g','Carrot · 2 pcs'];
+function addPantry(){let n=document.getElementById('pantryItem').value.trim(),q=document.getElementById('pantryQty').value.trim();if(!n){toast('Enter an ingredient.');return}pantry.push(n+(q?' · '+q:''));renderPantry();document.getElementById('pantryItem').value='';document.getElementById('pantryQty').value=''}
+function renderPantry(){document.getElementById('pantryList').innerHTML=pantry.map((x,i)=>`<span class="chip">${x} <button style="border:0;background:none;color:#a44" onclick="pantry.splice(${i},1);renderPantry()">×</button></span>`).join('')}
+function mealIdeas(){let list=pantry.join(', '),type=document.getElementById('mealType').value,time=document.getElementById('mealTime').value;document.getElementById('mealResult').innerHTML=`<div class="result"><b>Possible ${type.toLowerCase()} ideas</b><ol><li>Vegetable rice or pulao using rice, tomato, onion and carrot.</li><li>Curd rice with a simple vegetable side.</li><li>Quick tomato-carrot stir-fry with rice.</li></ol><p class="muted">Based on pantry: ${list}. Time available: ${time}. Check actual quantities, freshness and dietary restrictions.</p></div>`}
+</script>
+</body>
+</html>
